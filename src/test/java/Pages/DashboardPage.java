@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -39,8 +40,8 @@ public class DashboardPage {
     WebElement deliveryAddress;
     @FindBy(id = "inventory-next-btn")
     WebElement inventoryNextbtn;
-    @FindBy(xpath = "//*[@id=\"assessment-instructions\"]/summary")
-    WebElement inventoryFormReq;
+    //    @FindBy(xpath = "//*[@id=\"assessment-instructions\"]/summary")
+//    WebElement inventoryFormReq;
     @FindBy(id = "shipping-express")
     WebElement shippingMethod;
     @FindBy(id = "warranty-1yr")
@@ -53,8 +54,10 @@ public class DashboardPage {
     WebElement confirmPurchase;
     @FindBy(xpath = "//*[@id=\"purchase-success-toast\"]/p[1]")
     WebElement successToastMsg;
-    @FindBy(xpath = "//*[@id=\"view-history-btn\"]")
+    @FindBy(id = "view-history-btn")
     WebElement viewInvoice;
+    @FindBy(css = "#invoices-list  > div:nth-child(1) > div> [id^='view-invoice-INV-']")
+    WebElement viewInvoiceButton;
 
     public DashboardPage(WebDriver driver) {
         this.driver = driver;
@@ -143,7 +146,18 @@ public class DashboardPage {
 
     public void userViewInvoice() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(viewInvoice));
+
+        // Scroll the element into the middle of the screen
+        org.openqa.selenium.JavascriptExecutor js = (org.openqa.selenium.JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView({block: 'center'});", viewInvoice);
+
+        // Now try a standard click
         viewInvoice.click();
 
+    }
+
+    public void userClicksViewInvoice() {
+        viewInvoiceButton.click();
     }
 }

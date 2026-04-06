@@ -130,5 +130,11 @@ public class InventoryAutomationTest extends Base {
     @Test (dependsOnMethods = "userConfirmsSuccessMsgDisplayed")
     public void userClicksViewInvoice() {
         dashboardPage.userViewInvoice();
+
+    }
+
+    @Test (dependsOnMethods = "userClicksViewInvoice")
+    public void userClicksViewInvoiceBtn(){
+        dashboardPage.userClicksViewInvoice();
     }
 }
