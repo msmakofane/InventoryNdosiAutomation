@@ -41,10 +41,12 @@ public class ReadFromFile {
 
     public static String password = dataFormatter.formatCellValue(sheet.getRow(1).getCell(1));
 
-    static XSSFSheet secondSheet = workbook.getSheet("dashboard");
+    static XSSFSheet secondSheet = workbook.getSheet("Inventory");
 
-    public static String firstName = secondSheet.getRow(1).getCell(0).getStringCellValue();
+    public static String deliveryAddress = secondSheet.getRow(1).getCell(0).getStringCellValue();
 
+    static XSSFSheet thirdSheet = workbook.getSheet("Extras");
 
+    public static String discountCode = secondSheet.getRow(1).getCell(0).getStringCellValue();
 
 }

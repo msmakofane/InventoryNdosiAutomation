@@ -1,5 +1,6 @@
 package Pages;
 
+import Utils.ReadFromFile;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,7 +38,7 @@ public class DashboardPage {
     @FindBy(id = "quantity")
     WebElement deviceQuantity;
     @FindBy(id = "address")
-    WebElement deliveryAddress;
+    WebElement deliveryAddressField;
     @FindBy(id = "inventory-next-btn")
     WebElement inventoryNextbtn;
     //    @FindBy(xpath = "//*[@id=\"assessment-instructions\"]/summary")
@@ -47,7 +48,7 @@ public class DashboardPage {
     @FindBy(id = "warranty-1yr")
     WebElement warranty;
     @FindBy(id = "discount-code")
-    WebElement discountCode;
+    WebElement discountCodeField;
     @FindBy(id = "apply-discount-btn")
     WebElement applyDiscountBtn;
     @FindBy(id = "purchase-device-btn")
@@ -114,8 +115,8 @@ public class DashboardPage {
         deviceQuantity.sendKeys("2");
     }
 
-    public void enterDeliveryAddress() {
-        deliveryAddress.sendKeys("123 Test Street");
+    public void enterDeliveryAddress(String deliveryAddress) {
+        deliveryAddressField.sendKeys(deliveryAddress);
     }
 
     public void clickInventoryNextbtn() {
@@ -131,8 +132,8 @@ public class DashboardPage {
         warranty.click();
     }
 
-    public void enterDiscountCode() {
-        discountCode.sendKeys("SAVE10");
+    public void enterDiscountCode(String discountCode) {
+        discountCodeField.sendKeys(discountCode);
         applyDiscountBtn.click();
     }
 
