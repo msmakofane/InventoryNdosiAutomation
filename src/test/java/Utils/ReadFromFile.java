@@ -47,6 +47,6 @@ public class ReadFromFile {
 
     static XSSFSheet thirdSheet = workbook.getSheet("Extras");
 
-    public static String discountCode = secondSheet.getRow(1).getCell(0).getStringCellValue();
+    public static String discountCode = thirdSheet.getRow(1).getCell(0).getStringCellValue();
 
 }
